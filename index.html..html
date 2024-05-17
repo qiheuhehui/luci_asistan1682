@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUCI - Asistan</title>
+    <style>
+        body{
+            background-image: url(https://www.wallpaperfusion.com/Download/18023/?W=1920&H=1080);
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #container {
+            text-align: center;
+        }
+
+        #sual {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        #gonder {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #cavab {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        #logo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 250px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img id="logo" src="https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2020/10/luci_logo_new.jpg" alt="LUCI Logo">
+        <h1>LUCI - Asistan</h1>
+        <input type="text" id="sual" placeholder="Sorunuzu yazın...">
+        <br>
+        <button id="gonder">Gönder</button>
+        <div id="cavab"></div>
+    </div>
+
+    <script>
+        document.getElementById("gonder").addEventListener("click", () => {
+            const sual = document.getElementById("sual").value.trim();
+            if (sual !== "") {
+                const cavab = getResponse(sual);
+                document.getElementById("cavab").innerText = cavab;
+            } else {
+                document.getElementById("cavab").innerText = "Lütfen bir soru girin.";
+            }
+        });
+
+        function getResponse(sual) {
+            // Asistanın cevapları burada belirtilmeli
+            const cevaplar = {
+                "selam": "merhaba size nasil yardimci ola bilirim?",
+                "bana saka yap": "tabi meksikada maymunlar yasamio maymunlar amerikada yasio xd",
+                "sen ne ise yarion": "ben size yardim etmek icin burdayim",
+                "ronaldo kimdir": "bildigim kadarila ronaldo goat dir",
+                "seni yaradan kisi kim": "o maselef soyleye bilmiom gizli bilgi",
+                "messi kimdir": "mesi bildigim kadarila cuce dir ",
+                "sen kosa bilionmu": "ben yapay zekatyim nasil kosa bilirim!",
+                // Diğer komutlar buraya eklenebilir
+            };
+
+            // Eğer girilen soru cevaplar arasında varsa cevabı döndür, yoksa standart bir mesaj döndür
+            return cevaplar.hasOwnProperty(sual.toLowerCase()) ? cevaplar[sual.toLowerCase()] : "Üzgünüm, bu soruya cevap veremiyorum.";
+        }
+    </script>
+</body>
+</html>
